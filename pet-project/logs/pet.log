@@ -1,0 +1,21 @@
+2024-10-02 14:38:54,002 - SELECT DATABASE()
+2024-10-02 14:38:54,002 - [raw sql] ()
+2024-10-02 14:38:54,004 - SELECT @@sql_mode
+2024-10-02 14:38:54,004 - [raw sql] ()
+2024-10-02 14:38:54,005 - SELECT @@lower_case_table_names
+2024-10-02 14:38:54,006 - [raw sql] ()
+2024-10-02 14:38:54,007 - BEGIN (implicit)
+2024-10-02 14:38:54,013 - SELECT users.name, users.surname, users.location, users.phone_number, users.created_on, users.last_modified_on, users.prefers_phone_call, users.prefers_telegram, users.id, users.email, users.hashed_password, users.is_active, users.is_superuser, users.is_verified 
+FROM users 
+WHERE lower(users.email) = lower(%s)
+2024-10-02 14:38:54,014 - [generated in 0.00068s] ('user2@example.com',)
+2024-10-02 14:38:54,082 - INSERT INTO users (name, surname, location, phone_number, created_on, last_modified_on, prefers_phone_call, prefers_telegram, email, hashed_password, is_active, is_superuser, is_verified) VALUES (%s, %s, %s, %s, now(), now(), %s, %s, %s, %s, %s, %s, %s)
+2024-10-02 14:38:54,083 - [generated in 0.00106s] ('Test', 'Tester', 'none', None, 0, 0, 'user2@example.com', '$argon2id$v=19$m=65536,t=3,p=4$HemWw6DNds1tCwBVnLcqqA$//8b4FcAzFK2i4pqEkBJ57l5zq/TpzhlaWOnLLJ7Kqs', 1, 0, 0)
+2024-10-02 14:38:54,086 - COMMIT
+2024-10-02 14:38:54,093 - BEGIN (implicit)
+2024-10-02 14:38:54,096 - SELECT users.name, users.surname, users.location, users.phone_number, users.created_on, users.last_modified_on, users.prefers_phone_call, users.prefers_telegram, users.id, users.email, users.hashed_password, users.is_active, users.is_superuser, users.is_verified 
+FROM users 
+WHERE users.id = %s
+2024-10-02 14:38:54,096 - [generated in 0.00059s] (2,)
+2024-10-02 14:38:54,099 - ROLLBACK
+2024-10-02 14:38:54,100 - Method: POST URL: /api/v1/auth/register Status Code: 201 Execution Time: 0.1117 seconds
